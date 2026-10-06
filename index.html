@@ -241,19 +241,47 @@
 </footer>
 
 <script>
-// Giveaway Club signup: opens the visitor's email app addressed to the club inbox.
-var CLUB_EMAIL = "fantasyball0202@yahoo.com";
-document.getElementById("clubForm").addEventListener("submit", function(e){
+// Giveaway Club: submit directly to Formspree.
+var form = document.getElementById("clubForm");
+var button = form.querySelector('button[type="submit"]');
+var status = document.createElement("p");
+status.setAttribute("role", "status");
+status.setAttribute("aria-live", "polite");
+form.insertAdjacentElement("afterend", status);
+
+form.addEventListener("submit", async function(e) {
   e.preventDefault();
-  var email = document.getElementById("clubEmail").value.trim();
-  if(!email) return;
-  if(CLUB_EMAIL.indexOf("YOUR-EMAIL") === 0){
-    alert("Thanks for your interest! The signup is being wired up — check back soon.");
-    return;
+  if (button.disabled || !form.reportValidity()) return;
+
+  button.disabled = true;
+  button.textContent = "Joining...";
+  status.textContent = "Sending your signup...";
+
+  try {
+    var response = await fetch("https://formspree.io/f/xbgddjwe", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: document.getElementById("clubEmail").value.trim(),
+        message: "Please add me to the Twisted Creations Giveaway Club."
+      })
+    });
+
+    if (!response.ok) throw new Error("Signup failed");
+
+    status.textContent =
+      "Thanks! Your Giveaway Club signup has been received.";
+    form.reset();
+  } catch (error) {
+    status.textContent =
+      "We couldn't confirm your signup. Please try again shortly.";
+  } finally {
+    button.disabled = false;
+    button.textContent = "Join Free";
   }
-  window.location.href = "mailto:" + CLUB_EMAIL +
-    "?subject=" + encodeURIComponent("Join the Giveaway Club") +
-    "&body=" + encodeURIComponent("Please add me to the Twisted Creations Giveaway Club!\n\nMy email: " + email);
 });
 </script>
 
