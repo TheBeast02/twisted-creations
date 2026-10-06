@@ -225,10 +225,9 @@
     <div class="club">
       <h2>🎁 The Giveaway Club</h2>
       <p>One free handmade giveaway every month. Winners announced on the YouTube channel. No spam — just the good stuff.</p>
-      <form id="clubForm">
-        <input type="email" id="clubEmail" placeholder="you@example.com" required aria-label="Email address">
-        <button class="btn" type="submit" style="border:none; cursor:pointer;">Join Free</button>
-      </form>
+    <iframe width="100%" height="500" src="https://f385187f.sibforms.com/v2/serve/MUIFAIMX2J_L5FTTC2wN_Qoi7K_cIzBwmcR6Kx3p8A_2zRr910qxo-zVTuuBR5SB-AaALKZAloX9J_RDRCU0wJHBLF8RHs9m_Etb8WS4IUNnm6B_tJ8Kqw-t-rbU0GYAAw0_RGZki4oVqRclU4sREvTfgcurgVNdS8CMxP7GcKVG6-wCrGKAGSjNDLraNGpj-zswx8gObIb4hIe25g==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;border-radius:12px;"></iframe>
+<p class="fine">Tip: check your spam folder for the welcome email, and mark it "not spam" so you never miss a drawing.</p>
+
       <p class="fine">A premium tier with extra perks is coming later — club members hear about it first.</p>
     </div>
   </div>
@@ -240,50 +239,7 @@
   <p>© 2026 Twisted Creations. All rights reserved.</p>
 </footer>
 
-<script>
-// Giveaway Club: submit directly to Formspree.
-var form = document.getElementById("clubForm");
-var button = form.querySelector('button[type="submit"]');
-const status = document.createElement("p");
-status.setAttribute("role", "status");
-status.setAttribute("aria-live", "polite");
-form.insertAdjacentElement("afterend", status);
 
-form.addEventListener("submit", async function(e) {
-  e.preventDefault();
-  if (button.disabled || !form.reportValidity()) return;
-
-  button.disabled = true;
-  button.textContent = "Joining...";
-  status.textContent = "Sending your signup...";
-
-  try {
-    var response = await fetch("https://formspree.io/f/xbgddjwe", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: document.getElementById("clubEmail").value.trim(),
-        message: "Please add me to the Twisted Creations Giveaway Club."
-      })
-    });
-
-    if (!response.ok) throw new Error("Signup failed");
-
-    status.textContent =
-      "Thanks! Your Giveaway Club signup has been received.";
-    form.reset();
-  } catch (error) {
-    status.textContent =
-      "We couldn't confirm your signup. Please try again shortly.";
-  } finally {
-    button.disabled = false;
-    button.textContent = "Join Free";
-  }
-});
-</script>
 
 </body>
 </html>
