@@ -244,7 +244,7 @@
 // Giveaway Club: submit directly to Formspree.
 var form = document.getElementById("clubForm");
 var button = form.querySelector('button[type="submit"]');
-var status = document.createElement("p");
+const status = document.createElement("p");
 status.setAttribute("role", "status");
 status.setAttribute("aria-live", "polite");
 form.insertAdjacentElement("afterend", status);
