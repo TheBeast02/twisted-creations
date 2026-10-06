@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twisted Creations — Books, Music, Games & Handmade Prints</title>
+<meta name="description" content="Twisted Creations: children's books by Aaron & Monica Albertson, original music, the Bramble Star Catcher game, 3D-printed creations, and a monthly giveaway club.">
+<style>
+  :root{
+    --cream:#FFF9F0; --cream2:#FFFDF5; --honey:#7A4A14; --honey-dark:#5C370E;
+    --ink:#3B2A1A; --pumpkin:#E8833A; --pumpkin-dark:#C96A24;
+    --green:#3E6B34; --card-shadow:0 4px 18px rgba(90,55,14,.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--cream); color:var(--ink); line-height:1.6;
+  }
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; color:var(--honey-dark); line-height:1.25;}
+  a{color:var(--honey);}
+  .wrap{max-width:960px; margin:0 auto; padding:0 20px;}
+
+  /* Nav */
+  nav{position:sticky; top:0; z-index:50; background:rgba(255,249,240,.96);
+      border-bottom:2px solid #F0E2C8; backdrop-filter:blur(6px);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:10px 20px;}
+  .brand{font-family:Georgia,serif; font-weight:bold; font-size:1.25rem; color:var(--honey-dark); text-decoration:none;}
+  .brand span{color:var(--pumpkin);}
+  nav ul{display:flex; gap:4px; list-style:none; flex-wrap:wrap;}
+  nav ul a{text-decoration:none; font-size:.85rem; font-weight:600; color:var(--honey);
+           padding:8px 10px; border-radius:10px;}
+  nav ul a:active{background:#F7EAD3;}
+
+  /* Hero */
+  .hero{text-align:center; padding:56px 20px 44px;
+        background:radial-gradient(ellipse at 50% 0%, #FCEFD9 0%, var(--cream) 70%);}
+  .hero h1{font-size:2.6rem; margin-bottom:6px;}
+  .hero h1 span{color:var(--pumpkin);}
+  .hero p.tag{font-size:1.15rem; color:var(--honey); margin-bottom:22px;}
+  .btn{display:inline-block; background:var(--pumpkin); color:#fff !important; text-decoration:none;
+       font-weight:700; padding:14px 28px; border-radius:14px; font-size:1.05rem;
+       box-shadow:0 4px 0 var(--pumpkin-dark); margin:6px;}
+  .btn:active{transform:translateY(2px); box-shadow:0 2px 0 var(--pumpkin-dark);}
+  .btn.ghost{background:var(--cream2); color:var(--honey-dark) !important;
+             box-shadow:0 4px 0 #E4D3B3; border:2px solid #EAD9B8;}
+
+  section{padding:44px 0;}
+  section h2{font-size:1.9rem; text-align:center; margin-bottom:8px;}
+  section p.lead{text-align:center; color:var(--honey); max-width:640px; margin:0 auto 28px;}
+
+  .grid{display:grid; gap:22px; grid-template-columns:1fr;}
+  @media(min-width:700px){ .grid.cols3{grid-template-columns:repeat(3,1fr);} .grid.cols2{grid-template-columns:repeat(2,1fr);} }
+
+  .card{background:var(--cream2); border-radius:18px; overflow:hidden;
+        box-shadow:var(--card-shadow); border:1px solid #F0E4CB; display:flex; flex-direction:column;}
+  .card img{width:100%; height:auto; display:block; aspect-ratio:16/10; object-fit:cover;}
+  .card img.square{aspect-ratio:1/1;}
+  .card .body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .card h3{font-size:1.25rem;}
+  .card p{font-size:.95rem; color:#5a4632;}
+  .card .body .btn{margin:8px 0 0; text-align:center; font-size:.95rem; padding:12px 20px;}
+  .meta{font-size:.8rem; color:#8a6f4d; font-style:italic;}
+
+  .pill{display:inline-block; font-size:.72rem; font-weight:800; letter-spacing:.08em;
+        padding:5px 12px; border-radius:999px; text-transform:uppercase; align-self:flex-start;}
+  .pill.giveaway{background:#DFF2DC; color:var(--green); border:1px solid #9CCB94;}
+  .pill.display{background:#E8E4F5; color:#4A3F8C; border:1px solid #B9AEE0;}
+  .pill.soon{background:#FDEBD3; color:var(--pumpkin-dark); border:1px solid #F3C48D;}
+
+  .banner{background:var(--honey-dark); color:#F7EAD3; border-radius:20px; padding:32px 24px;
+          text-align:center; box-shadow:var(--card-shadow);}
+  .banner h2{color:#FFE9C4;}
+  .banner p{max-width:560px; margin:10px auto 20px; color:#EFDDBE;}
+  .banner .btn{box-shadow:0 4px 0 #8a4d12;}
+
+  .club{background:var(--cream2); border:2px dashed var(--pumpkin); border-radius:20px;
+        padding:30px 24px; text-align:center; box-shadow:var(--card-shadow);}
+  .club h2{margin-bottom:6px;}
+  .club form{display:flex; flex-direction:column; gap:12px; max-width:420px; margin:20px auto 0;}
+  .club input[type=email]{padding:14px 16px; border-radius:12px; border:2px solid #E4D3B3;
+        font-size:1rem; background:#fff;}
+  .club input[type=email]:focus{outline:none; border-color:var(--pumpkin);}
+  .fine{font-size:.82rem; color:#8a6f4d; margin-top:14px;}
+
+  footer{background:var(--honey-dark); color:#EFDDBE; text-align:center; padding:28px 20px; margin-top:20px;}
+  footer a{color:#FFD9A0;}
+  footer p{font-size:.88rem; margin:4px 0;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Twisted<span>Creations</span></a>
+    <ul>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#game">Game</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#creations">Creations</a></li>
+      <li><a href="#club">Giveaway Club</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Twisted <span>Creations</span></h1>
+    <p class="tag">Books, music, games &amp; handmade 3D prints — all from one workbench.</p>
+    <a class="btn" href="#books">Browse the Books</a>
+    <a class="btn ghost" href="#club">Join the Giveaway Club</a>
+  </div>
+</header>
+
+<section id="books">
+  <div class="wrap">
+    <h2>The Books</h2>
+    <p class="lead">Stories written to be read aloud — and one written the hard way.</p>
+    <div class="grid cols3">
+      <div class="card">
+        <img src="assets/book-bramble-en.jpg" alt="Bramble's Comfy Chair book artwork">
+        <div class="body">
+          <h3>Bramble's Comfy Chair</h3>
+          <p>A rhyming read-aloud about Bramble, a big friendly bear, and his comfy chair — with a little orange fox cub along for the ride.</p>
+          <p class="meta">By Aaron &amp; Monica Albertson · Paperback</p>
+          <a class="btn" href="https://www.amazon.com/dp/B0GK71WNMZ" target="_blank" rel="noopener">Buy on Amazon</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/book-bramble-es.jpg" alt="La silla cómoda de Bramble book artwork">
+        <div class="body">
+          <h3>La silla cómoda de Bramble</h3>
+          <p>The Spanish edition of Bramble's Comfy Chair — the same cozy story, en español, for bilingual families and little learners.</p>
+          <p class="meta">Por Aaron y Monica Albertson · Tapa blanda</p>
+          <a class="btn" href="https://www.amazon.com/dp/B0HKDJKQSQ" target="_blank" rel="noopener">Comprar en Amazon</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="body" style="justify-content:center;">
+          <h3>Desert Lessons</h3>
+          <p><strong>33 Truths Learned the Hard Way.</strong> Thirty-three short reflections from a life lived the hard way — through The Breaking, The Losing, The Listening, The Returning, and The Rising.</p>
+          <p class="meta">By Aaron Albertson · 100 pages</p>
+          <a class="btn" href="https://www.amazon.com/dp/B0GB4R4R7V" target="_blank" rel="noopener">Buy on Amazon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="game" style="background:#F7EDD9;">
+  <div class="wrap">
+    <h2>Play the Game</h2>
+    <p class="lead">Bramble the Bear: Star Catcher Deluxe — a free browser game starring Bramble and friends. No download, plays on phones, tablets, and computers.</p>
+    <div class="banner">
+      <h2>⭐ Star Catcher Deluxe ⭐</h2>
+      <p>Catch falling stars, dodge the grumps, and climb the levels with Bramble. How high can you score?</p>
+      <a class="btn" href="https://thebeast02.github.io/bramble-star-catcher/bramble-screen-fit.html" target="_blank" rel="noopener">Play Free Now</a>
+    </div>
+  </div>
+</section>
+
+<section id="music">
+  <div class="wrap">
+    <h2>The Music</h2>
+    <p class="lead">Original music on all streaming services — listen free on YouTube.</p>
+    <div class="grid cols2">
+      <div class="card">
+        <div class="body" style="justify-content:center;">
+          <h3>🎵 Listen Free on YouTube</h3>
+          <p>Full tracks on the CurrentNTwisted channel — no subscription needed, just press play.</p>
+          <a class="btn" href="https://www.youtube.com/@currentntwisted" target="_blank" rel="noopener">Open the Channel</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="body" style="justify-content:center;">
+          <h3>🎧 All Streaming Services</h3>
+          <p>Also on Spotify, Apple Music, and everywhere else music lives — search Aaron TNT Albertson.</p>
+          <p class="meta">Distributed worldwide via DistroKid</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:26px;">
+      <a class="btn ghost" href="https://www.youtube.com/@currentntwisted?sub_confirmation=1" target="_blank" rel="noopener">▶ Subscribe on YouTube</a>
+    </div>
+  </div>
+</section>
+
+<section id="creations" style="background:#F7EDD9;">
+  <div class="wrap">
+    <h2>Creations</h2>
+    <p class="lead">Handmade 3D prints from the workshop — some are given away every month.</p>
+    <div class="grid cols2">
+      <div class="card">
+        <img class="square" src="assets/print-keychain.png" alt="Sam-Sam ghost keychain 3D print">
+        <div class="body">
+          <span class="pill giveaway">🎁 Giveaway</span>
+          <h3>Sam-Sam Ghost Keychain</h3>
+          <p>A spooky-cute ghost-pickle keychain, printed in full color. Given away free to Giveaway Club members every month.</p>
+          <a class="btn" href="#club">Enter the Giveaway</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/print-wallart.jpg" alt="Haunted house HueForge wall art">
+        <div class="body">
+          <span class="pill display">🖼 Display</span>
+          <h3>Haunted House Wall Art</h3>
+          <p>A full-color HueForge scene — a haunted house under a night sky, printed layer by layer in filament.</p>
+          <p class="meta">Workshop showpiece</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid" style="margin-top:22px;">
+      <div class="card">
+        <div class="body" style="justify-content:center; text-align:center;">
+          <span class="pill soon" style="align-self:center;">✨ Coming Soon</span>
+          <h3>More prints on the way</h3>
+          <p>New designs drop regularly. Join the Giveaway Club below and you'll never miss one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="club">
+  <div class="wrap">
+    <div class="club">
+      <h2>🎁 The Giveaway Club</h2>
+      <p>One free handmade giveaway every month. Winners announced on the YouTube channel. No spam — just the good stuff.</p>
+      <form id="clubForm">
+        <input type="email" id="clubEmail" placeholder="you@example.com" required aria-label="Email address">
+        <button class="btn" type="submit" style="border:none; cursor:pointer;">Join Free</button>
+      </form>
+      <p class="fine">A premium tier with extra perks is coming later — club members hear about it first.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Twisted Creations</strong> — books, music, games &amp; handmade prints.</p>
+  <p>📺 <a href="https://www.youtube.com/@currentntwisted" target="_blank" rel="noopener">YouTube: @currentntwisted</a></p>
+  <p>© 2026 Twisted Creations. All rights reserved.</p>
+</footer>
+
+<script>
+// Giveaway Club signup: opens the visitor's email app addressed to the club inbox.
+var CLUB_EMAIL = "fantasyball@yahoo.com";
+document.getElementById("clubForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  var email = document.getElementById("clubEmail").value.trim();
+  if(!email) return;
+  if(CLUB_EMAIL.indexOf("YOUR-EMAIL") === 0){
+    alert("Thanks for your interest! The signup is being wired up — check back soon.");
+    return;
+  }
+  window.location.href = "mailto:" + CLUB_EMAIL +
+    "?subject=" + encodeURIComponent("Join the Giveaway Club") +
+    "&body=" + encodeURIComponent("Please add me to the Twisted Creations Giveaway Club!\n\nMy email: " + email);
+});
+</script>
+
+</body>
+</html>
