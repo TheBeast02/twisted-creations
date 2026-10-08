@@ -6,10 +6,11 @@
 <title>Twisted Creations — Books, Music, Games & Handmade Prints</title>
 <meta name="description" content="Twisted Creations: children's books by Aaron & Monica Albertson, original music, the Bramble Star Catcher game, 3D-printed creations, and a monthly giveaway club.">
 <style>
+  /* ===== HALLOWEEN THEME (Oct 2026) — replaces the original <style> block ===== */
   :root{
-    --cream:#FFF9F0; --cream2:#FFFDF5; --honey:#7A4A14; --honey-dark:#5C370E;
-    --ink:#3B2A1A; --pumpkin:#E8833A; --pumpkin-dark:#C96A24;
-    --green:#3E6B34; --card-shadow:0 4px 18px rgba(90,55,14,.12);
+    --cream:#16101F; --cream2:#221730; --honey:#C9A3E0; --honey-dark:#FFA63D;
+    --ink:#F1E6CE; --pumpkin:#FF7B1C; --pumpkin-dark:#A84A08;
+    --green:#8BD46E; --card-shadow:0 4px 18px rgba(0,0,0,.55);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
@@ -21,19 +22,19 @@
   .wrap{max-width:960px; margin:0 auto; padding:0 20px;}
 
   /* Nav */
-  nav{position:sticky; top:0; z-index:50; background:rgba(255,249,240,.96);
-      border-bottom:2px solid #F0E2C8; backdrop-filter:blur(6px);}
+  nav{position:sticky; top:0; z-index:50; background:rgba(22,16,31,.96);
+      border-bottom:2px solid #3A2A52; backdrop-filter:blur(6px);}
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:10px 20px;}
   .brand{font-family:Georgia,serif; font-weight:bold; font-size:1.25rem; color:var(--honey-dark); text-decoration:none;}
   .brand span{color:var(--pumpkin);}
   nav ul{display:flex; gap:4px; list-style:none; flex-wrap:wrap;}
   nav ul a{text-decoration:none; font-size:.85rem; font-weight:600; color:var(--honey);
            padding:8px 10px; border-radius:10px;}
-  nav ul a:active{background:#F7EAD3;}
+  nav ul a:active{background:#3A2A52;}
 
   /* Hero */
   .hero{text-align:center; padding:56px 20px 44px;
-        background:radial-gradient(ellipse at 50% 0%, #FCEFD9 0%, var(--cream) 70%);}
+        background:radial-gradient(ellipse at 50% 0%, #3A2150 0%, var(--cream) 70%);}
   .hero h1{font-size:2.6rem; margin-bottom:6px;}
   .hero h1 span{color:var(--pumpkin);}
   .hero p.tag{font-size:1.15rem; color:var(--honey); margin-bottom:22px;}
@@ -42,7 +43,7 @@
        box-shadow:0 4px 0 var(--pumpkin-dark); margin:6px;}
   .btn:active{transform:translateY(2px); box-shadow:0 2px 0 var(--pumpkin-dark);}
   .btn.ghost{background:var(--cream2); color:var(--honey-dark) !important;
-             box-shadow:0 4px 0 #E4D3B3; border:2px solid #EAD9B8;}
+             box-shadow:0 4px 0 #0D0916; border:2px solid #4A3568;}
 
   section{padding:44px 0;}
   section h2{font-size:1.9rem; text-align:center; margin-bottom:8px;}
@@ -52,40 +53,41 @@
   @media(min-width:700px){ .grid.cols3{grid-template-columns:repeat(3,1fr);} .grid.cols2{grid-template-columns:repeat(2,1fr);} }
 
   .card{background:var(--cream2); border-radius:18px; overflow:hidden;
-        box-shadow:var(--card-shadow); border:1px solid #F0E4CB; display:flex; flex-direction:column;}
+        box-shadow:var(--card-shadow); border:1px solid #4A3568; display:flex; flex-direction:column;}
   .card img{width:100%; height:auto; display:block; aspect-ratio:16/10; object-fit:cover;}
   .card img.square{aspect-ratio:1/1;}
   .card .body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1;}
   .card h3{font-size:1.25rem;}
-  .card p{font-size:.95rem; color:#5a4632;}
+  .card p{font-size:.95rem; color:#D8C9AE;}
   .card .body .btn{margin:8px 0 0; text-align:center; font-size:.95rem; padding:12px 20px;}
-  .meta{font-size:.8rem; color:#8a6f4d; font-style:italic;}
+  .meta{font-size:.8rem; color:#A68F6E; font-style:italic;}
 
   .pill{display:inline-block; font-size:.72rem; font-weight:800; letter-spacing:.08em;
         padding:5px 12px; border-radius:999px; text-transform:uppercase; align-self:flex-start;}
-  .pill.giveaway{background:#DFF2DC; color:var(--green); border:1px solid #9CCB94;}
-  .pill.display{background:#E8E4F5; color:#4A3F8C; border:1px solid #B9AEE0;}
-  .pill.soon{background:#FDEBD3; color:var(--pumpkin-dark); border:1px solid #F3C48D;}
+  .pill.giveaway{background:#1E3A24; color:var(--green); border:1px solid #3E7A4C;}
+  .pill.display{background:#2A2350; color:#B9AEE0; border:1px solid #4A3F8C;}
+  .pill.soon{background:#3A2410; color:#FFB35C; border:1px solid #7A4A1C;}
 
-  .banner{background:var(--honey-dark); color:#F7EAD3; border-radius:20px; padding:32px 24px;
+  .banner{background:#241531; border:2px solid var(--pumpkin); color:#F7EAD3; border-radius:20px; padding:32px 24px;
           text-align:center; box-shadow:var(--card-shadow);}
   .banner h2{color:#FFE9C4;}
   .banner p{max-width:560px; margin:10px auto 20px; color:#EFDDBE;}
-  .banner .btn{box-shadow:0 4px 0 #8a4d12;}
+  .banner .btn{box-shadow:0 4px 0 #5C2E08;}
 
   .club{background:var(--cream2); border:2px dashed var(--pumpkin); border-radius:20px;
         padding:30px 24px; text-align:center; box-shadow:var(--card-shadow);}
   .club h2{margin-bottom:6px;}
   .club form{display:flex; flex-direction:column; gap:12px; max-width:420px; margin:20px auto 0;}
-  .club input[type=email]{padding:14px 16px; border-radius:12px; border:2px solid #E4D3B3;
-        font-size:1rem; background:#fff;}
+  .club input[type=email]{padding:14px 16px; border-radius:12px; border:2px solid #4A3568;
+        font-size:1rem; background:#FFF9F0;}
   .club input[type=email]:focus{outline:none; border-color:var(--pumpkin);}
-  .fine{font-size:.82rem; color:#8a6f4d; margin-top:14px;}
+  .fine{font-size:.82rem; color:#A68F6E; margin-top:14px;}
 
-  footer{background:var(--honey-dark); color:#EFDDBE; text-align:center; padding:28px 20px; margin-top:20px;}
+  footer{background:#0E0916; border-top:2px solid var(--pumpkin); color:#EFDDBE; text-align:center; padding:28px 20px; margin-top:20px;}
   footer a{color:#FFD9A0;}
   footer p{font-size:.88rem; margin:4px 0;}
 </style>
+
 </head>
 <body>
 
