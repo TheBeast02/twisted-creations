@@ -83,7 +83,10 @@
   .club input[type=email]:focus{outline:none; border-color:var(--pumpkin);}
   .fine{font-size:.82rem; color:#A68F6E; margin-top:14px;}
 
-  footer{background:#0E0916; border-top:2px solid var(--pumpkin); color:#EFDDBE; text-align:center; padding:28px 20px; margin-top:20px;}
+  footer{background:#0E0916; border-top:2px solid var(--pumpkin); color:#EFDDBE; text-align:center; padding:28px 20px; margin-top:20px;   
+        } #porchPostApproved blockquote{margin:18px 0 0; padding:16px 18px; background:rgba(255,255,255,.06); border:1px solid rgba(239,221,190,.25); border-radius:12px;} 
+  #porchPostApproved blockquote p{margin:0;} 
+  .porch-post-sig{margin-top:10px; font-style:italic; opacity:.85;}
   footer a{color:#FFD9A0;}
   footer p{font-size:.88rem; margin:4px 0;}
 </style>
@@ -188,7 +191,7 @@
           if (show !== 'TRUE' || !name || !note) return;
           var q = document.createElement('blockquote');
           var p = document.createElement('p'); p.textContent = note;
-          var f = document.createElement('footer'); f.textContent = '— ' + name;
+          var f = document.createElement('div'); f.className = 'porch-post-sig'; f.textContent = '— ' + name;
           q.appendChild(p); q.appendChild(f); box.appendChild(q);
         });
       })
