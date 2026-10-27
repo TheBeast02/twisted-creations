@@ -156,9 +156,46 @@
   <p class="lead">Leave a note on the Porch Post — say hello, tell us where you're from, or tell us what your little one thought of Bramble. We read every note, and our favorites go up on the wall.</p>
   <div class="porch-post-notes">
     <blockquote>Welcome to the Porch Post! Leave us a note — we read every single one. — Aaron &amp; Monica</blockquote>
+    <div id="porchPostApproved"></div>
   </div>
   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesj0BwUm9Ky8uHWD_MGrqP66rWNS8q2oXiajkq-6QYHlA2ig/viewform?embedded=true" width="640" height="608" frameborder="0" marginheight="0" marginwidth="0" style="max-width:640px; width:100%; border:0;" title="The Porch Post form">Loading…</iframe>
 </section>
+  <script>
+    (function () {
+      var box = document.getElementById('porchPostApproved');
+      if (!box) return;
+      function parseCSV(text) {
+        var rows = [], row = [], cur = '', inQ = false;
+        for (var i = 0; i < text.length; i++) {
+          var c = text[i];
+          if (inQ) {
+            if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else { inQ = false; } }
+            else { cur += c; }
+          } else if (c === '"') { inQ = true; }
+          else if (c === ',') { row.push(cur); cur = ''; }
+          else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(cur); rows.push(row); row = []; cur = ''; }
+          else { cur += c; }
+        }
+        if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+        return rows;
+      }
+      fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRfNKq_J38A-aCNqffXUBtm8AeSDp4AxF2dlebMSrolAydsd2PTz49AnpQTRHW7LCJtoN_dqKdenDO7/pub?output=csv')
+      .then(function (r) { return r.text(); })
+      .then(function (text) {
+        var rows = parseCSV(text).slice(1).reverse();
+        rows.forEach(function (r) {
+          var name = (r[1] || '').trim(), note = (r[2] || '').trim(), show = (r[3] || '').trim().toUpperCase();
+          if (show !== 'TRUE' || !name || !note) return;
+          var q = document.createElement('blockquote');
+          var p = document.createElement('p'); p.textContent = note;
+          var f = document.createElement('footer'); f.textContent = '— ' + name;
+          q.appendChild(p); q.appendChild(f); box.appendChild(q);
+        });
+      })
+      .catch(function () {});
+    })();
+    
+  </script>
 <section id="porch-light">
     <div class="wrap">
       <h2>Project Porch Light</h2>
