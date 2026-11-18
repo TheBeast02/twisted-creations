@@ -12,8 +12,8 @@
   html,body{margin:0;padding:0;height:100%;background:#000;overflow:hidden;
     font-family:'Trebuchet MS','Comic Sans MS',Verdana,sans-serif;
     -webkit-user-select:none;user-select:none;touch-action:none}
-  #wrap{position:fixed;left:0;right:0;top:0;height:calc(100vh - var(--ctl,0px));display:flex;align-items:center;justify-content:center}
-  #game{background:#000;display:block;border-radius:0;}
+  #wrap{position:fixed;left:0;right:0;top:0;height:calc(100vh - var(--ctl,0px));height:calc(100dvh - var(--ctl,0px));display:flex;align-items:center;justify-content:center}
+  #game{background:#000;display:block;border-radius:0;}#fitBtn{position:fixed;top:8px;right:64px;z-index:16;padding:7px 12px;border-radius:8px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.35);font-size:15px;font-weight:bold;cursor:pointer}#fitMsg{position:fixed;top:44px;right:12px;z-index:16;max-width:70vw;background:rgba(0,0,0,.8);color:#fff;padding:6px 10px;border-radius:8px;font-size:13px;display:none}body.fs #wrap{height:100vh;height:100dvh}body.fs #touch{background:rgba(0,0,0,.25)}body.fs .tbtn{background:rgba(255,255,255,.18)}
   #touch{position:fixed;left:0;right:0;bottom:0;height:84px;pointer-events:none;display:none;z-index:5}
   body.touchmode #touch{display:block}
   /* some in-app viewers don't report touch to JS - show controls on any touch device */
@@ -52,7 +52,7 @@
 </style>
 <style>#chapters{position:fixed;z-index:15;right:12px;top:40px;border-radius:8px;padding:9px;background:#30261e;color:#ffe4aa;font:bold 12px sans-serif}#chapters summary{cursor:pointer;text-align:right}#chapters>div{display:flex;flex-direction:column;gap:7px;padding-top:10px}#chapters button{background:#ffdfa5;color:#432d1f;border:1px solid #c38a4f;border-radius:7px;padding:9px 12px;font-weight:bold;cursor:pointer}#chapters button:focus-visible{outline:3px solid white}#chapters span{letter-spacing:.12em;margin-right:10px}@media(orientation:landscape) and (max-height:600px){#chapters{position:absolute;z-index:12;top:28px;right:8px;background:#30261eb0;padding:3px}#chapters span,#chapters button:nth-last-child(-n+2){display:none}#chapters button{padding:5px;font-size:10px}}</style></head>
 <body>
-<details id="chapters" aria-label="Choose a chapter"><summary>Chapters</summary><div><span>DILLY DASH</span><button data-chapter="1">Halloween · 1–3</button><button data-chapter="4">Thanksgiving · 4–6</button><button data-chapter="5">Try Harvest</button><button data-chapter="6">Try Turkey</button><button data-chapter="6" data-boss="1">Cranberry Boss</button><button data-room="crossroads">Secret Crossroads</button></div></details><div id="wrap"><canvas id="game" width="960" height="540"></canvas></div>
+<details id="chapters" aria-label="Choose a chapter"><summary>Chapters</summary><div><span>DILLY DASH</span><button data-chapter="1">Halloween · 1–3</button><button data-chapter="4">Thanksgiving · 4–6</button><button data-chapter="5">Try Harvest</button><button data-chapter="6">Try Turkey</button><button data-chapter="6" data-boss="1">Cranberry Boss</button><button data-room="crossroads">Secret Crossroads</button></div></details><button id="fitBtn" type="button" aria-label="Fit to fullscreen">&#9974; Fit</button><div id="fitMsg" role="status"></div><div id="wrap"><canvas id="game" width="960" height="540"></canvas></div>
 <div id="bootlog" style="position:fixed;top:8px;left:8px;z-index:99;max-width:92vw;max-height:40vh;overflow:auto;background:rgba(0,0,0,.78);color:#8fe388;font:13px monospace;padding:10px;border-radius:8px;">boot...</div>
 <div id="touch">
   <div class="tbtn" id="btnL">&#9664;</div>
@@ -76,9 +76,9 @@ const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
 function fitCanvas(){
   if(document.body.classList.contains('sideways')){canvas.style.width='100vw';canvas.style.height='auto';canvas.style.maxHeight='92vh';return;}
   const touch=('ontouchstart' in window)||window.matchMedia('(pointer: coarse)').matches;
-  const strip=touch?(window.innerWidth>window.innerHeight?100:92):0;
+  const fsEl=document.fullscreenElement||document.webkitFullscreenElement;const strip=fsEl?0:(touch?(window.innerWidth>window.innerHeight?100:92):0);
   document.documentElement.style.setProperty('--ctl',strip+'px');
-  const availW=window.innerWidth,availH=window.innerHeight-strip,aspect=availW/availH;
+  const vh=(window.visualViewport&&window.visualViewport.height)||window.innerHeight;const availW=window.innerWidth,availH=vh-strip,aspect=availW/availH;
   let viewW=960;
   if(window.innerWidth>window.innerHeight&&aspect>960/540)viewW=Math.min(Math.round(540*aspect),1920);
   if(canvas.width!==viewW)canvas.width=viewW;
@@ -88,8 +88,8 @@ function fitCanvas(){
   canvas.style.height=Math.floor(540*scale)+'px';
   canvas.style.maxHeight='none';
 }
-window.addEventListener('resize',fitCanvas);
-window.addEventListener('orientationchange',()=>setTimeout(fitCanvas,100));
+window.addEventListener('resize',fitCanvas);if(window.visualViewport)window.visualViewport.addEventListener('resize',fitCanvas);document.addEventListener('fullscreenchange',function(){var f=!!(document.fullscreenElement||document.webkitFullscreenElement);document.body.classList.toggle('fs',f);var b=document.getElementById('fitBtn');if(b)b.textContent=f?'⛶ Exit':'⛶ Fit';fitCanvas();});document.addEventListener('webkitfullscreenchange',function(){var f=!!(document.fullscreenElement||document.webkitFullscreenElement);document.body.classList.toggle('fs',f);var b=document.getElementById('fitBtn');if(b)b.textContent=f?'⛶ Exit':'⛶ Fit';fitCanvas();});
+window.addEventListener('orientationchange',()=>setTimeout(fitCanvas,100));function showFitMsg(){var m=document.getElementById('fitMsg');if(m){m.textContent="Fullscreen isn't available in this browser \u2014 try turning your phone sideways.";m.style.display='block';setTimeout(function(){m.style.display='none';},6000);}var bl=document.getElementById('bootlog');if(bl){var d=document.createElement('div');d.textContent="Fullscreen isn't available in this browser \u2014 try turning your phone sideways.";bl.appendChild(d);}}var fitBtn=document.getElementById('fitBtn');if(fitBtn)fitBtn.addEventListener('click',function(){if(document.body.classList.contains('sideways')){document.body.classList.remove('sideways');fitCanvas();}if(document.fullscreenElement||document.webkitFullscreenElement){if(document.exitFullscreen)document.exitFullscreen();else if(document.webkitExitFullscreen)document.webkitExitFullscreen();return;}var el=document.body,p=null;try{if(el.requestFullscreen)p=el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();else showFitMsg();}catch(e){showFitMsg();}if(p&&p.catch)p.catch(function(){showFitMsg();});});
 let W=960,H=540,TILE=40,ROWS=13;
 fitCanvas();
 let COLS=200;
