@@ -159,6 +159,8 @@
   .word-btn[aria-pressed="true"]{background:var(--forest);color:#fff}
   @media (prefers-color-scheme: dark){ .word-btn[aria-pressed="true"]{color:#0f2416} }
   .star-field{position:relative;margin-top:18px;background:var(--night);border-radius:var(--radius-md);height:210px;overflow:hidden}
+  .play-box.sky:fullscreen{display:flex;flex-direction:column}
+  .play-box.sky:fullscreen .star-field{flex:1;height:100%;min-height:0}
   @media (prefers-color-scheme: dark){ .star-field{background:#0a1830} }
   .star-btn{position:absolute;width:52px;height:52px;border:none;background:transparent;font-size:34px;cursor:pointer;display:grid;place-items:center;color:#ffd94d;text-shadow:0 0 14px rgba(255,217,77,.9);padding:0;min-height:52px;line-height:1}
   .star-score{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
@@ -350,6 +352,7 @@
         <div class="star-field" id="starField" aria-label="Mini star catching game area"></div>
         <div class="star-score">
           <button class="mini-btn" id="starStart" type="button">▶ Start</button>
+          <button class="mini-btn" id="starFull" type="button">⛶ Full screen</button>
           <strong>Stars caught: <span id="starCount">0</span></strong>
           <span id="starMsg" aria-live="polite">You can do it!</span>
         </div>
@@ -503,6 +506,11 @@
     }, 20000);
     timers.push(end);
   });
+  var fullBtn=document.getElementById('starFull');
+  var starBox=field.closest('.play-box');
+  function updateFullLabel(){fullBtn.textContent=document.fullscreenElement?'⛶ Exit':'⛶ Full screen';}
+  function toggleFull(){if(document.fullscreenElement||document.webkitFullscreenElement){if(document.exitFullscreen){document.exitFullscreen();}else if(document.webkitExitFullscreen){document.webkitExitFullscreen();}return;}var p=null;try{if(starBox.requestFullscreen){p=starBox.requestFullscreen();}else if(starBox.webkitRequestFullscreen){starBox.webkitRequestFullscreen();}else{msgEl.textContent='Full screen is not available in this browser.';}}catch(e){msgEl.textContent='Full screen is not available in this browser.';}if(p&&p.catch){p.catch(function(){msgEl.textContent='Full screen is not available in this browser.';});}}
+  if(fullBtn&&starBox){fullBtn.addEventListener('click',toggleFull);document.addEventListener('fullscreenchange',updateFullLabel);document.addEventListener('webkitfullscreenchange',updateFullLabel);}
 })();
 </script>
 </body>
