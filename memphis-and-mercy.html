@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Memphis &amp; Mercy — Behind the Music | The Twisted Porch</title>
+<meta name="description" content="Memphis & Mercy by Aaron TNT Albertson — the illustrated story behind the album. Eight chapters of a lifetime of faith, forgiveness and finding our way home.">
+<style>
+  :root{
+    --ink:#30251d;
+    --paper:#f8efdf;
+    --gold:#e5c18b;
+    --gold-dim:#c9a05f;
+    --line:#98764d;
+    --card:#3a2d22;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ink);color:var(--paper);font:19px/1.6 Georgia,serif;margin:0}
+  main{max-width:760px;margin:auto;padding:24px 20px 64px}
+  h1,h2,h3{line-height:1.15}
+  h1{font-size:clamp(2.2rem,8vw,3rem);margin:.35em 0 .1em}
+  h2{font-size:clamp(1.5rem,6vw,1.9rem);margin:.3em 0 .5em}
+  h3{font-size:1.05rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:2.2em 0 .6em}
+  p{margin:.7em 0}
+  small,.kicker{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+  blockquote{color:var(--gold);font-style:italic;margin:1em 0;padding-left:16px;border-left:3px solid var(--line)}
+  a{color:var(--gold)}
+  img{width:100%;border-radius:8px;display:block}
+  .home-link{display:inline-block;margin-bottom:8px;font-size:.95rem;text-decoration:none}
+  .home-link:hover{text-decoration:underline}
+  .tagline{font-size:clamp(1.1rem,4.5vw,1.3rem);color:var(--gold);font-style:italic;margin:.2em 0 1em}
+  /* Audio preview */
+  .audio-preview{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:16px 0}
+  .audio-label{color:var(--gold);font-style:italic;margin:0 0 10px}
+  .audio-preview audio{width:100%;display:block}
+  /* Next-chapter buttons */
+  .next-btn{display:block;width:100%;text-align:center;margin:18px 0 0;padding:14px 18px;background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:6px;font:inherit;font-weight:bold;cursor:pointer;min-height:48px}
+  .next-btn:hover{background:var(--card)}
+  /* Booklet download */
+  .booklet-box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin-top:12px;text-align:center}
+  .btn{display:inline-block;padding:14px 22px;background:var(--gold);color:var(--ink);border:0;border-radius:6px;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer;min-height:48px}
+  .btn:hover{background:var(--paper)}
+  .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+  .btn.ghost:hover{background:var(--card)}
+  /* Chapter menu */
+  .chapter-menu{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .chapter-menu button{padding:14px 12px;background:var(--card);color:var(--paper);border:1px solid var(--line);border-radius:8px;font:inherit;text-align:left;cursor:pointer;min-height:48px}
+  .chapter-menu button:hover{border-color:var(--gold)}
+  .chapter-menu button[aria-current="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+  .chapter-menu button .num{display:block;color:var(--gold);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+  .chapter-menu button[aria-current="true"] .num{color:var(--ink)}
+  /* Chapter viewer */
+  .viewer-nav{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 4px}
+  .viewer-nav .btn{flex:1;min-width:140px;text-align:center}
+  .chapter-count{text-align:center;color:var(--gold);font-size:.95rem;margin:10px 0 0}
+  article{padding:24px 0;border-top:1px solid var(--line)}
+  article:first-of-type{border-top:0}
+  .chapters-wrap.read-all article{border-top:1px solid var(--line)}
+  .chapters-wrap.read-all article:first-of-type{border-top:0}
+  /* Credits */
+  .credits{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-top:12px}
+  .credits dl{margin:0}
+  .credits dt{color:var(--gold);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin-top:12px}
+  .credits dt:first-child{margin-top:0}
+  .credits dd{margin:2px 0 0}
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;text-align:center}
+  footer p{margin:.4em 0}
+  @media (max-width:520px){
+    body{font-size:18px}
+    main{padding:20px 16px 56px}
+    .chapter-menu{grid-template-columns:1fr}
+    .viewer-nav .btn{flex:1 1 100%}
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <a class="home-link" href="https://thetwistedporch.com/">&larr; Back to The Twisted Porch</a>
+
+  <p><small>Aaron TNT Albertson &middot; 2026</small></p>
+  <h1>Memphis &amp; Mercy</h1>
+  <p class="tagline">A lifetime of faith, forgiveness and finding our way home.</p>
+  <p><button type="button" class="btn" id="startBtn">Start with Mama&rsquo;s Bible</button></p>
+  <div class="audio-preview">
+    <p class="audio-label">Hear a preview of &lsquo;I Laid It Down&rsquo;</p>
+    <audio controls preload="metadata" src="assets/i-laid-it-down-preview.mp3"></audio>
+  </div>
+  <p>Eight chapters of a fictional life, inspired by vintage Memphis gospel. Created by Aaron TNT Albertson in collaboration with ChatGPT and Muse, with music generated using Suno.</p>
+
+  <h3>Listen to the album</h3>
+  <p>Streaming links will be available when the album is released.</p>
+
+  <h3>The illustrated booklet</h3>
+  <div class="booklet-box">
+    <p>Read the full story with all eight illustrations, or take it with you.</p>
+    <p><a class="btn" href="Memphis-and-Mercy-Digital-Booklet.pdf" download>Download the PDF booklet</a></p>
+    <p><small>Memphis and Mercy &mdash; Digital Booklet &middot; PDF</small></p>
+  </div>
+
+  <h3>Behind the music</h3>
+  <p>Choose a chapter to read its story, or read them all in order.</p>
+
+  <nav class="chapter-menu" aria-label="Chapters">
+    <button type="button" data-chapter="0"><span class="num">Chapter 01</span>Mama&rsquo;s Bible</button>
+    <button type="button" data-chapter="1"><span class="num">Chapter 02</span>A Long Way from Sunday</button>
+    <button type="button" data-chapter="2"><span class="num">Chapter 03</span>Nobody Saw Me Cry</button>
+    <button type="button" data-chapter="3"><span class="num">Chapter 04</span>I Laid It Down</button>
+    <button type="button" data-chapter="4"><span class="num">Chapter 05</span>Learning How to Walk Again</button>
+    <button type="button" data-chapter="5"><span class="num">Chapter 06</span>The Hands That Held Me</button>
+    <button type="button" data-chapter="6"><span class="num">Chapter 07</span>Leave a Little Light Behind</button>
+    <button type="button" data-chapter="7"><span class="num">Chapter 08</span>When Heaven Calls My Name</button>
+  </nav>
+
+  <div class="viewer-nav">
+    <button type="button" class="btn ghost" id="prevBtn">&larr; Previous chapter</button>
+    <button type="button" class="btn ghost" id="nextBtn">Next chapter &rarr;</button>
+    <button type="button" class="btn" id="allBtn">Read all</button>
+  </div>
+  <p class="chapter-count" id="chapterCount">Chapter 1 of 8</p>
+
+  <div class="chapters-wrap" id="chaptersWrap">
+
+    <article>
+      <small>Chapter 01 &middot; The seeds of faith</small>
+      <h2>Mama&rsquo;s Bible</h2>
+      <img alt="Illustration for Mama&rsquo;s Bible" src="assets/ch01-mamas-bible.jpg">
+      <p>Sunday morning begins in a small kitchen, with biscuits on the table and sunlight through the curtains. A mother opens her well-worn Bible beside her little boy. He cannot yet understand how much those quiet moments will mean. Years later, the book and the photograph tucked inside will become a reminder of a love that never stopped reaching for him.</p>
+      <blockquote>Mama&rsquo;s Bible had a broken spine / Pages worn by the hands of time</blockquote>
+      <p><button type="button" class="next-btn" data-next="1">Next: A Long Way from Sunday →</button></p>
+    </article>
+
+    <article>
+      <small>Chapter 02 &middot; The wandering years</small>
+      <h2>A Long Way from Sunday</h2>
+      <img alt="Illustration for A Long Way from Sunday" src="assets/ch02-a-long-way-from-sunday.jpg">
+      <p>The boy grows into a young man eager to make his own way. The church, the familiar hymns and his mother&rsquo;s prayers become distant memories. He chases things that promise fulfillment, only to discover how easily they slip away. Somewhere beneath the noise of his new life, the sound of Sunday remains.</p>
+      <blockquote>I&rsquo;m a long way from Sunday / Lord, but Sunday ain&rsquo;t that far away.</blockquote>
+      <p><button type="button" class="next-btn" data-next="2">Next: Nobody Saw Me Cry →</button></p>
+    </article>
+
+    <article>
+      <small>Chapter 03 &middot; The breaking point</small>
+      <h2>Nobody Saw Me Cry</h2>
+      <img alt="Illustration for Nobody Saw Me Cry" src="assets/ch03-nobody-saw-me-cry.jpg">
+      <p>Years pass. One night he sits alone at a kitchen table, with two cups and only himself for company. He retrieves Mama&rsquo;s Bible from a forgotten box. A photograph slips from its pages, bringing back the tenderness of childhood. In the quiet, he finally admits how much he hurts and begins to turn toward home.</p>
+      <blockquote>Nobody saw me cry / Nobody but You</blockquote>
+      <p><button type="button" class="next-btn" data-next="3">Next: I Laid It Down →</button></p>
+    </article>
+
+    <article>
+      <small>Chapter 04 &middot; Surrender</small>
+      <h2>I Laid It Down</h2>
+      <img alt="Illustration for I Laid It Down" src="assets/ch04-i-laid-it-down.jpg">
+      <p>He has spent years trying to carry everything himself. Now, in the quiet of a church, he kneels and gives his burdens to Jesus. There is no need to pretend that his past never happened. Grace meets him where he is, and the weight he has carried for so long begins to lift. His next prayer is simply to learn how to live again.</p>
+      <blockquote>What a heavy load I carried / What a sweet relief</blockquote>
+      <p><button type="button" class="next-btn" data-next="4">Next: Learning How to Walk Again →</button></p>
+    </article>
+
+    <article>
+      <small>Chapter 05 &middot; A new beginning</small>
+      <h2>Learning How to Walk Again</h2>
+      <img alt="Illustration for Learning How to Walk Again" src="assets/ch05-learning-how-to-walk-again.jpg">
+      <p>Monday morning arrives with the same responsibilities and the same imperfect world. But something inside him has changed. He begins to apologize, reach out and practice the kindness he learned as a child. Faith becomes a series of small choices rather than a single dramatic moment. Each step is a new beginning.</p>
+      <blockquote>One little step, one little prayer / One more morning knowing You&rsquo;re there</blockquote>
+      <p><button type="button" class="next-btn" data-next="5">Next: The Hands That Held Me →</button></p>
+    </article>
+
+    <article>
+      <small>Chapter 06 &middot; Gratitude</small>
+      <h2>The Hands That Held Me</h2>
+      <img alt="Illustration for The Hands That Held Me" src="assets/ch06-the-hands-that-held-me.jpg">
+      <p>With the passing years comes a different understanding of his life. He remembers his mother&rsquo;s hands, his father catching him when he fell, and the people who stood beside him when he could not stand alone. What once seemed like luck now looks like mercy. He gives thanks for the love that carried him through.</p>
+      <blockquote>For the mercy I mistook for luck / On the roads I walked alone</blockquote>
+      <p><button type="button" class="next-btn" data-next="6">Next: Leave a Little Light Behind →</button></p>
+    </article>
+
+    <article>
+      <small>Chapter 07 &middot; Legacy</small>
+      <h2>Leave a Little Light Behind</h2>
+      <img alt="Illustration for Leave a Little Light Behind" src="assets/ch07-leave-a-little-light-behind.jpg">
+      <p>The little boy is now a grandfather. On the porch, with two grandchildren beside him, he opens the same Bible his mother once read to him. He knows he cannot walk every road for them, but he can leave them something to guide their steps. The porch light becomes a promise: love can continue shining long after we are gone.</p>
+      <blockquote>Plant a seed of love today / For a child who&rsquo;ll find their way</blockquote>
+      <p><button type="button" class="next-btn" data-next="7">Next: When Heaven Calls My Name →</button></p>
+    </article>
+
+    <article>
+      <small>Chapter 08 &middot; Homecoming</small>
+      <h2>When Heaven Calls My Name</h2>
+      <img alt="Illustration for When Heaven Calls My Name" src="assets/ch08-when-heaven-calls-my-name.jpg">
+      <p>The journey draws to a peaceful close. The old Bible rests on the porch, and morning light spreads across the fields. The man who once wandered so far from Sunday now looks toward a home beyond sorrow and shame. His story ends in the hope that the mercy which held him throughout his life will hold him forever.</p>
+      <blockquote>Oh, what a glorious morning / When Heaven calls my name.</blockquote>
+      <p><button type="button" class="next-btn" data-next="bonus">Continue to Thank You for Your Mercy&nbsp;→</button></p>
+    </article>
+
+  </div>
+
+  <h3 id="bonus">Bonus recording</h3>
+  <p>Thank You for Your Mercy &mdash; a bonus recording from the Memphis &amp; Mercy sessions.</p>
+
+  <h3>Credits</h3>
+  <div class="credits">
+    <dl>
+      <dt>Artist</dt>
+      <dd>Aaron TNT Albertson</dd>
+      <dt>Creative collaboration</dt>
+      <dd>Aaron, GPT and Muse</dd>
+      <dt>Music</dt>
+      <dd>Generated using Suno</dd>
+      <dt>Story &amp; illustrations</dt>
+      <dd>Memphis &amp; Mercy &mdash; the illustrated digital album companion, created by Aaron TNT Albertson in collaboration with ChatGPT and Muse</dd>
+    </dl>
+  </div>
+
+  <footer>
+    <p>Memphis &amp; Mercy &mdash; Aaron TNT Albertson &middot; 2026</p>
+    <p><a href="https://thetwistedporch.com/">The Twisted Porch</a></p>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var articles = Array.prototype.slice.call(document.querySelectorAll('#chaptersWrap article'));
+  var menuButtons = Array.prototype.slice.call(document.querySelectorAll('.chapter-menu button'));
+  var nextButtons = Array.prototype.slice.call(document.querySelectorAll('.next-btn'));
+  var wrap = document.getElementById('chaptersWrap');
+  var countEl = document.getElementById('chapterCount');
+  var allBtn = document.getElementById('allBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var bonusEl = document.getElementById('bonus');
+  var n = 0;
+  var readAll = false;
+
+  function scrollToEl(el){
+    var top = el.getBoundingClientRect().top + window.scrollY - 12;
+    window.scrollTo({top: top, behavior: 'smooth'});
+  }
+
+  function show(i, scroll){
+    n = (i + articles.length) % articles.length;
+    readAll = false;
+    wrap.classList.remove('read-all');
+    articles.forEach(function(x, idx){ x.hidden = idx !== n; });
+    menuButtons.forEach(function(b, idx){
+      if (idx === n) { b.setAttribute('aria-current','true'); }
+      else { b.removeAttribute('aria-current'); }
+    });
+    countEl.textContent = 'Chapter ' + (n + 1) + ' of 8';
+    allBtn.textContent = 'Read all';
+    nextBtn.textContent = n === articles.length - 1 ? 'Continue to Thank You for Your Mercy →' : 'Next chapter →';
+    if (scroll) { scrollToEl(articles[n]); }
+  }
+
+  function showAll(){
+    readAll = true;
+    wrap.classList.add('read-all');
+    articles.forEach(function(x){ x.hidden = false; });
+    menuButtons.forEach(function(b){ b.removeAttribute('aria-current'); });
+    countEl.textContent = 'All 8 chapters';
+    allBtn.textContent = 'Show one chapter';
+    scrollToEl(articles[0]);
+  }
+
+  function goNext(target){
+    if (target === 'bonus') { scrollToEl(bonusEl); return; }
+    var idx = parseInt(target, 10);
+    if (readAll) { scrollToEl(articles[idx]); }
+    else { show(idx, true); }
+  }
+
+  function goForward(){
+    if (n === articles.length - 1) { scrollToEl(bonusEl); return; }
+    show(n + 1, true);
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', function(){ show(n - 1, true); });
+  nextBtn.addEventListener('click', goForward);
+  allBtn.addEventListener('click', function(){
+    if (readAll) { show(n, true); } else { showAll(); }
+  });
+  document.getElementById('startBtn').addEventListener('click', function(){ show(0, true); });
+  menuButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      show(parseInt(b.getAttribute('data-chapter'), 10), true);
+    });
+  });
+  nextButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      goNext(b.getAttribute('data-next'));
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if (readAll) return;
+    if (e.key === 'ArrowLeft') show(n - 1, true);
+    if (e.key === 'ArrowRight') goForward();
+  });
+
+  show(0, false);
+})();
+</script>
+</body>
+</html>
